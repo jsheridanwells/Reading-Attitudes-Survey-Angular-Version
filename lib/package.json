@@ -1,0 +1,34 @@
+{
+  "name": "scoring",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeremy Sheridan Wells",
+  "license": "ISC",
+  "devDependencies": {
+    "concat": "^1.0.3",
+    "connect": "^3.6.3",
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "jshint": "^2.9.5",
+    "jshint-stylish": "^2.2.1",
+    "matchdep": "^2.0.0",
+    "sass": "^1.0.0-beta.2",
+    "watch": "^1.0.2"
+  },
+  "dependencies": {
+    "angular": "^1.6.6",
+    "angular-route": "^1.6.6",
+    "bootstrap": "^4.0.0-beta",
+    "firebase": "^4.3.1",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.5"
+  },
+  "description": "The app Scoring will help teachers by organizing formative assessment data, then displaying multiple views of the data to better communicate student performance results to stakeholders and to facilitate sounder instructional practices."
+}
