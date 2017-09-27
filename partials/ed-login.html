@@ -1,23 +1,22 @@
-<div>
-	<header>
-		<h1>Elementary Reading Attitudes Survey</h1>
-	</header>
-	<div class="row">
-		<div class="col-6">
-			<img src="img/img3.png" alt="Garfield">
+
+<div class="main-splash">
+	<div class="header">
+		<h1 class="splash-logo">Reading Attitudes Survey</h1>
+	</div>
+	<div class="row splash-row">
+		<div class="col-6 splash-left">
+			<img src="img/img3.png" class="splash-img" alt="Garfield">
 		</div>
-		<div class="col-6">
-			<div class="login-field">
-				<input type="text" placeholder="email" ng-model="account.email">
+		<div class="col-6 splash-right">
+			<div class="input-group input-group-lg">
+				<input type="text" placeholder="email" ng-model="account.email" aria-describedby="sizing-addon1" class="login-input">
 			</div>
-			<div class="login-field">
-				<input type="text" placeholder="password" ng-model="account.password">
+			<div class="input-group input-group-lg">
+				<input type="password" placeholder="password" ng-model="account.password" aria-describedby="sizing-addon1" class="login-input">
 			</div>
-			<div class="login-button">
-				<a ng-click="register()" class="btn btn-info" role="button">Register</a>
-			</div>
-			<div class="login-button">
-				<a ng-click="login()" class="btn btn-info" role="button">Sign In</a>
+			<div class="login-buttons">
+				<a ng-click="register()" class="btn login-btn" role="button">Register</a>
+				<a ng-click="login()" class="btn login-btn" role="button">Sign In</a>
 			</div>
 		</div>
 	</div>
