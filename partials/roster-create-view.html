@@ -1,4 +1,30 @@
 <div class="main-splash">
 	<div ng-include="'partials/nav.html'"></div>
-	Roster Create View
+	<div class="main">
+		<h2>Create a New Survey</h2>
+		<p>Add Students:</p>
+		<div class="student-input">
+			<input type="text" placeholder="First Name" ng-model="newStudent.firstName">
+			<input type="text" placeholder="Last Name" ng-model="newStudent.lastName">
+			<button ng-click="addStudent()">Add</button>
+		</div>
+
+		<h2>Students:</h2>
+		<table class="table">
+			<thead>
+				<th></th>
+				<th>First Name:</th>
+				<th>Last Name:</th>
+				<th>Access Code:</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="student in studentArr track by $index">
+					<td>{{$index + 1}}</td>
+					<td>{{student.firstName}}</td>
+					<td>{{student.lastName}}</td>
+					<td>{{student.accessCode}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
