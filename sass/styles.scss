@@ -65,8 +65,15 @@ h1.splash-logo {
 	text-align: center;
 }
 
+.login-buttons {
+	display: flex;
+	margin-top: 3em;
+	justify-content: space-around;
+}
+
 .login-btn {
-	@extend .splash-btn;
+	background-color: $blue;
+	border: 0;
 	width: 40%;
 	margin: 0.5em;
 	cursor: pointer;
