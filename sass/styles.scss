@@ -14,6 +14,10 @@
 	font-size: $size;
 }
 
+h2 {
+	@include text-font(3em);
+}
+
 p, a {
 	@include text-font(16px);
 }
@@ -79,4 +83,8 @@ h1.splash-logo {
 	cursor: pointer;
 }
 
+.instructions {
+	margin-top: 3em;
+	text-align: center;
+}
 
