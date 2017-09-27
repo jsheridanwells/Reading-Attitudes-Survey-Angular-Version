@@ -1,0 +1,55 @@
+//temporarily highlight all div borders
+// div {
+// 	border: 1px solid red;
+// }
+
+//fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Ultra');
+
+@mixin logo-font($size) {
+	font-family: 'Ultra', serif;
+	text-shadow: 2px 5px #000;
+	color: #fff;
+	font-size: $size;
+}
+
+//colors
+$blue: #5bc0de;
+
+.index-container {
+	margin-top: 3em;
+}
+
+//splash styles
+.main-splash {
+	height: 90vh;
+}
+
+.header {
+	background-color: $blue;
+	text-align: center;
+}
+
+h1.splash-logo {
+	@include logo-font(50px);
+}
+
+.splash-row {
+	height: 100%;
+}
+
+.splash-img {
+	margin: 25%;
+	width: 50%;
+}
+
+.splash-btn {
+	height: 4em;
+	font-size: 2em;
+	border: 1px solid green;
+	width: 100%;
+	margin-top: 2em;
+	background-color: $blue;
+	color: white;
+}
+
