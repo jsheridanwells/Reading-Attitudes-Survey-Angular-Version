@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('loginCtrl', function ($scope, $location, userFactory) {
+app.controller('loginCtrl', function ($scope, $window, $location, userFactory) {
 
 	$scope.account = {};
 
@@ -11,8 +11,12 @@ app.controller('loginCtrl', function ($scope, $location, userFactory) {
 	};
 
 	$scope.login = () => {
+		console.log("login firing");
 		userFactory.loginUser($scope.account)
-			.then(data => $location.url('/ed-overview'))
+			.then(data => {
+				console.log("login retrieving data", data);
+				$window.location.href = '#!/ed-overview';
+			})
 			.catch(error => console.log("error from login", error.message));
 	};
 
