@@ -1,5 +1,5 @@
 'use strict';
-app.controller('rosterCreateCtrl', function ($scope, $window) {
+app.controller('rosterCreateCtrl', function ($scope, $window, codeGenerator) {
 
 	$scope.studentArr = [];
 	$scope.newStudent = {
@@ -10,6 +10,7 @@ app.controller('rosterCreateCtrl', function ($scope, $window) {
 
 	$scope.addStudent = () => {
 		let student = $scope.newStudent;
+		student.accessCode = codeGenerator.createCode();
 		$scope.studentArr.push(student);
 		resetNewStudent();
 		console.log("$scope.studentArr", $scope.studentArr);
