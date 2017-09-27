@@ -11,12 +11,8 @@ app.controller('loginCtrl', function ($scope, $window, $location, userFactory) {
 	};
 
 	$scope.login = () => {
-		console.log("login firing");
 		userFactory.loginUser($scope.account)
-			.then(data => {
-				console.log("login retrieving data", data);
-				$window.location.href = '#!/ed-overview';
-			})
+			.then(data => $window.location.href = '#!/ed-overview')
 			.catch(error => console.log("error from login", error.message));
 	};
 
