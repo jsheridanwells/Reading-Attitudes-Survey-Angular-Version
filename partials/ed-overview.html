@@ -1,6 +1,17 @@
-<div ng-include="'partials/nav.html'"></div>
-<div>
-	<main>
-		Logged In
-	</main>
+
+<div class="main-splash">
+	<div ng-include="'partials/nav.html'"></div>
+	<div class="row splash-row">
+		<div class="col-6 splash-left">
+			<img src="img/img3.png" class="splash-img" alt="Garfield">
+		</div>
+		<div class="col-6 splash-right">
+			<div class="login-button mx-auto text-center">
+				<a ng-href="#!/roster-create" class="btn splash-btn" role="button">Create a New Survey</a>
+			</div>
+			<div class="login-button mx-auto text-center">
+				<a ng-href="#!/roster-list" class="btn splash-btn" role="button">View Previous Surveys</a>
+			</div>
+		</div>
+	</div>
 </div>

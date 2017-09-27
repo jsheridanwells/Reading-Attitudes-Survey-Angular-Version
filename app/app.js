@@ -29,6 +29,14 @@ app.config(($routeProvider) => {
 		templateUrl: 'partials/ed-overview.html',
 		controller: 'overviewCtrl'
 	})
+	.when('/roster-create', {
+		templateUrl: 'partials/roster-create-view.html',
+		controller: 'rosterCreateCtrl'
+	})
+	.when('/roster-list', {
+		templateUrl: 'partials/roster-list-view.html',
+		controller: 'rosterListCtrl'
+	})
 	.otherwise('/');
 });
 app.run((FBCreds) => firebase.initializeApp(FBCreds));
