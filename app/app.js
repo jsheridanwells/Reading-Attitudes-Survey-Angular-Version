@@ -25,6 +25,10 @@ app.config(($routeProvider) => {
 		templateUrl: 'partials/ed-login.html',
 		controller: 'loginCtrl'
 	})
+	.when('ed-overview', {
+		templateUrl: 'partials/ed-overview.html',
+		controller: 'overviewCtrl'
+	})
 	.otherwise('/');
 });
 
