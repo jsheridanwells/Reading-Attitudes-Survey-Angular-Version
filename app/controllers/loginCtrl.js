@@ -12,7 +12,7 @@ app.controller('loginCtrl', function ($scope, $location, userFactory) {
 
 	$scope.login = () => {
 		userFactory.loginUser($scope.account)
-			.then(data => $location.url('/'))
+			.then(data => $location.url('/ed-overview'))
 			.catch(error => console.log("error from login", error.message));
 	};
 

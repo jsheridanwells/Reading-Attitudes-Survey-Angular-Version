@@ -1,5 +1,5 @@
 'use strict';
-let app = angular.module('readingAttitudes', ['ngRoute']);
+const app = angular.module('readingAttitudes', ['ngRoute']);
 
 let isAuth = (userFactory) => new Promise ( (resolve, reject) => {
   userFactory.checkAuthenticated()
@@ -25,13 +25,10 @@ app.config(($routeProvider) => {
 		templateUrl: 'partials/ed-login.html',
 		controller: 'loginCtrl'
 	})
-	.when('ed-overview', {
+	.when('/ed-overview', {
 		templateUrl: 'partials/ed-overview.html',
 		controller: 'overviewCtrl'
 	})
 	.otherwise('/');
 });
-
-app.run(() => {
-	app.run((FBCreds) => firebase.initializeApp(FBCreds));
-});
+app.run((FBCreds) => firebase.initializeApp(FBCreds));
