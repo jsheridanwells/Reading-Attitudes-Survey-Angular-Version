@@ -4,14 +4,17 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 	//holds uid of current user
 	let userId = userFactory.getUserId();
 
-	// $scope.studentArr = [];
+	$scope.studentArr = [];
 	$scope.newStudent = {
 		firstName: '',
 		lastName: '',
+		accessCode: '',
 		responses: []
 	};
 
-	let roster = {};
+	let roster = {
+		uid: userId
+	};
 
 	// $scope.addStudent = () => {
 	// 	let student = $scope.newStudent;
@@ -23,7 +26,10 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 
 	$scope.addStudent = () => {
 		let code = codeGenerator.createCode();
+		$scope.newStudent.accessCode = code;
 		roster[code] = $scope.newStudent;
+		$scope.studentArr.push($scope.newStudent);
+		resetNewStudent();
 		console.log("roster", roster);
 	};
 
@@ -41,7 +47,8 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 			$scope.newStudent = {
 			firstName: '',
 			lastName: '',
-			accessCode: ''
+			accessCode: '',
+			responses: []
 		};
 	};
 
