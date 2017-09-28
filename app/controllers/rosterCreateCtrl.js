@@ -1,23 +1,35 @@
 'use strict';
-app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, edFactory) {
+app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, edFactory, userFactory) {
 
-	$scope.studentArr = [];
+	//holds uid of current user
+	let userId = userFactory.getUserId();
+
+	// $scope.studentArr = [];
 	$scope.newStudent = {
 		firstName: '',
 		lastName: '',
-		accessCode: ''
+		responses: []
 	};
 
+	let roster = {};
+
+	// $scope.addStudent = () => {
+	// 	let student = $scope.newStudent;
+	// 	student.accessCode = codeGenerator.createCode();
+	// 	$scope.studentArr.push(student);
+	// 	resetNewStudent();
+	// 	console.log("$scope.studentArr", $scope.studentArr);
+	// };
+
 	$scope.addStudent = () => {
-		let student = $scope.newStudent;
-		student.accessCode = codeGenerator.createCode();
-		$scope.studentArr.push(student);
-		resetNewStudent();
-		console.log("$scope.studentArr", $scope.studentArr);
+		let code = codeGenerator.createCode();
+		roster[code] = $scope.newStudent;
+		console.log("roster", roster);
 	};
 
 	$scope.createRoster = () => {
-		edFactory.postRoster($scope.studentArr)
+		roster.uid = userId;
+		edFactory.postRoster(roster)
 			.then(() => {
 				console.log("createRoster successful");
 				$location.url('/ed-overview');
