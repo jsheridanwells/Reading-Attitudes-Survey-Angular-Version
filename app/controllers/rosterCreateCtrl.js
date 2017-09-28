@@ -1,5 +1,5 @@
 'use strict';
-app.controller('rosterCreateCtrl', function ($scope, $window, codeGenerator) {
+app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, edFactory) {
 
 	$scope.studentArr = [];
 	$scope.newStudent = {
@@ -14,6 +14,15 @@ app.controller('rosterCreateCtrl', function ($scope, $window, codeGenerator) {
 		$scope.studentArr.push(student);
 		resetNewStudent();
 		console.log("$scope.studentArr", $scope.studentArr);
+	};
+
+	$scope.createRoster = () => {
+		edFactory.postRoster($scope.studentArr)
+			.then(() => {
+				console.log("createRoster successful");
+				$location.url('/ed-overview');
+			})
+			.catch(error => console.log("error from createRoster", error.message));
 	};
 
 	const resetNewStudent = () => {
