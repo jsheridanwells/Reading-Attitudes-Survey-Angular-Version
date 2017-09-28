@@ -4,12 +4,14 @@
 		<h2>Create a New Survey</h2>
 		<p>Add Students:</p>
 		<div class="student-input">
-			<input type="text" placeholder="First Name" ng-model="newStudent.firstName">
-			<input type="text" placeholder="Last Name" ng-model="newStudent.lastName">
-			<button ng-click="addStudent()">Add</button>
+			<form>
+				<input type="text" placeholder="First Name" ng-model="newStudent.firstName">
+				<input type="text" placeholder="Last Name" ng-model="newStudent.lastName">
+				<button ng-click="addStudent()">Add</button>
+			</form>
 		</div>
 
-		<h2>Students:</h2>
+		<h3>Students:</h3>
 		<table class="table">
 			<thead>
 				<th></th>
@@ -26,5 +28,6 @@
 				</tr>
 			</tbody>
 		</table>
+		<button ng-click="createRoster()">Create Roster</button>
 	</div>
 </div>
