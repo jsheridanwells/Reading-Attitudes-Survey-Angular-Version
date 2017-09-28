@@ -20,6 +20,7 @@ app.factory('userFactory', function ($q, $http) {
 		return firebase.auth().signOut();
 	};
 
+	//checks if user is authenticated, injects auth only routes, makes uid available
 	const checkAuthenticated = function (){
         return new Promise ( (resolve, reject) => {
             firebase.auth().onAuthStateChanged( (user) => {

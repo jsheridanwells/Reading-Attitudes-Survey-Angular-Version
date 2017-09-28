@@ -1,4 +1,5 @@
 'use strict';
+
 const app = angular.module('readingAttitudes', ['ngRoute']);
 
 let isAuth = (userFactory) => new Promise ( (resolve, reject) => {
@@ -27,16 +28,20 @@ app.config(($routeProvider) => {
 	})
 	.when('/ed-overview', {
 		templateUrl: 'partials/ed-overview.html',
-		controller: 'overviewCtrl'
+		controller: 'overviewCtrl',
+		resolve: {isAuth}
 	})
 	.when('/roster-create', {
 		templateUrl: 'partials/roster-create-view.html',
-		controller: 'rosterCreateCtrl'
+		controller: 'rosterCreateCtrl',
+		resolve: {isAuth}
 	})
 	.when('/roster-list', {
 		templateUrl: 'partials/roster-list-view.html',
-		controller: 'rosterListCtrl'
+		controller: 'rosterListCtrl',
+		resolve: {isAuth}
 	})
 	.otherwise('/');
 });
+
 app.run((FBCreds) => firebase.initializeApp(FBCreds));
