@@ -1,4 +1,5 @@
 'use strict';
+
 const app = angular.module('readingAttitudes', ['ngRoute']);
 
 let isAuth = (userFactory) => new Promise ( (resolve, reject) => {
@@ -42,4 +43,5 @@ app.config(($routeProvider) => {
 	})
 	.otherwise('/');
 });
+
 app.run((FBCreds) => firebase.initializeApp(FBCreds));
