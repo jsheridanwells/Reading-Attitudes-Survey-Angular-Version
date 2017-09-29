@@ -17,31 +17,38 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 		lastName: '',
 		accessCode: '',
 		rosterName: $scope.rosterName,
-		uid: userId
+		uid: userId,
+		id: ''
 	};
 
-	//organizes new student object with access code, adds to rosters object, resets form
+	//organizes new student object with access code, adds to firebase collection, resets form
 	$scope.addStudent = () => {
 		let code = codeGenerator.createCode();
 		$scope.newStudent.accessCode = code;
-		// roster[code] = $scope.newStudent;
-		$scope.studentArr.push($scope.newStudent);
-		resetNewStudent();
+		edFactory.postStudent($scope.newStudent)
+			.then(id => {
+				console.log("id", id);
+				$scope.newStudent.id = id.name;
+				$scope.studentArr.push($scope.newStudent);
+				console.log("studentArr", $scope.studentArr);
+				resetNewStudent();
+			})
+			.catch(error => console.log("error from addStudent", error));
 	};
 
-	//assigns uid to roster object, posts to firebase rosters collection, redirects to ed-overview
-	// $scope.createRoster = () => {
-	// 	// roster.uid = userId;
-	// 	// edFactory.postStudent(roster)
-	// 		.then(() => {
-	// 			$location.url('/ed-overview');
-	// 		})
-	// 		.catch(error => console.log("error from createRoster", error.message));
-	// };
+	$scope.editStudent = () => {
+
+	};
+
+	$scope.deleteStudent = (id) => {
+		edFactory.deleteStudent(id)
+			.then(response => response)
+			.catch(error => console.log("error from deleteStudent", error));
+	};
 
 	//clears newStudent form for next entry
 	const resetNewStudent = () => {
-			$scope.newStudent = {
+		$scope.newStudent = {
 			firstName: '',
 			lastName: '',
 			accessCode: '',

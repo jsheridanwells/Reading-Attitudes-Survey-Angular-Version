@@ -6,9 +6,11 @@
 		<p>Add Students:</p>
 		<div class="student-input">
 			<form>
-				<input type="text" placeholder="First Name" ng-model="newStudent.firstName">
-				<input type="text" placeholder="Last Name" ng-model="newStudent.lastName">
-				<button ng-click="addStudent()">Add</button>
+				<p>
+					<input type="text" placeholder="First Name" ng-model="newStudent.firstName">
+					<input type="text" placeholder="Last Name" ng-model="newStudent.lastName">
+					<button ng-click="addStudent()">Add</button>
+				</p>
 			</form>
 		</div>
 		<div class="student-table" ng-show="studentArr.length > 0">
@@ -30,8 +32,8 @@
 						<td>{{student.accessCode}}</td>
 						<td>{{rosterName}}</td>
 						<td>
-							<button>Edit</button>
-							<button>Delete</button>
+							<button ng-click="editStudent(student.id)">Edit</button>
+							<button ng-click="deleteStudent(student.id)">Delete</button>
 						</td>
 					</tr>
 				</tbody>

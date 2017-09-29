@@ -8,13 +8,29 @@ app.factory('edFactory', function ($http, $q, FBCreds) {
 	//posts new roster object to rosters collection
 	const postStudent = (student) => {
 		let newStudent = angular.toJson(student);
-		return $http.post(`${url}/students.json`, newStudent)
-			.then(data => console.log("data from postRoster", data))
-			.catch(error => console.log("error from postRoster", error.message));
+			return $http.post(`${url}/students.json`, newStudent)
+				.then(response => {
+					return response.data;
+				})
+				.catch(error => console.log("error from postStudent", error));
+		};
+
+	const editStudent = () => {
+
+	};
+
+	const deleteStudent = (id) => {
+		return $q((resolve, reject) => {
+			$http.delete(`${url}/students/${id}.json`)
+				.then(response => resolve(response))
+				.catch(error => reject(error));
+		});
 	};
 
 	return {
-		postStudent
+		postStudent,
+		editStudent,
+		deleteStudent
 	};
 
 });
