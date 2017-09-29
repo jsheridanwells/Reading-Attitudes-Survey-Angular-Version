@@ -34,15 +34,11 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 			.catch(error => console.log("error from addStudent", error));
 	};
 
-	$scope.editStudent = () => {
-
-	};
-
 	//deletes student from students collection in Firebase
 	$scope.deleteStudent = (id) => {
 		edFactory.deleteStudent(id)
 			.then(() => {
-				removeStudent(id);
+				removeItem(id, $scope.studentArr);
 			})
 			.catch(error => console.log("error from deleteStudent", error));
 	};
@@ -58,10 +54,10 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 	};
 
 	//removes student from students array, called after deleteStudent
-	const removeStudent = (id) => {
-		$scope.studentArr.forEach(student => {
-			if (id === student.id) {
-				$scope.studentArr.splice($scope.studentArr.indexOf(student), 1);
+	const removeItem = (id, arr) => {
+		arr.forEach(item => {
+			if (id === item.id) {
+				arr.splice(arr.indexOf(item), 1);
 			}
 		});
 	};
