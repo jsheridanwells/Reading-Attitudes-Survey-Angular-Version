@@ -27,10 +27,8 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 		$scope.newStudent.accessCode = code;
 		edFactory.postStudent($scope.newStudent)
 			.then(id => {
-				console.log("id", id);
 				$scope.newStudent.id = id.name;
 				$scope.studentArr.push($scope.newStudent);
-				console.log("studentArr", $scope.studentArr);
 				resetNewStudent();
 			})
 			.catch(error => console.log("error from addStudent", error));
@@ -42,7 +40,9 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 
 	$scope.deleteStudent = (id) => {
 		edFactory.deleteStudent(id)
-			.then(response => response)
+			.then(() => {
+				removeStudent(id);
+			})
 			.catch(error => console.log("error from deleteStudent", error));
 	};
 
@@ -54,6 +54,14 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 			accessCode: '',
 			responses: []
 		};
+	};
+
+	const removeStudent = (id) => {
+		$scope.studentArr.forEach(student => {
+			if (id === student.id) {
+				$scope.studentArr.splice($scope.studentArr.indexOf(student), 1);
+			}
+		});
 	};
 
 });
