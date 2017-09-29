@@ -38,6 +38,7 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 
 	};
 
+	//deletes student from students collection in Firebase
 	$scope.deleteStudent = (id) => {
 		edFactory.deleteStudent(id)
 			.then(() => {
@@ -56,6 +57,7 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 		};
 	};
 
+	//removes student from students array, called after deleteStudent
 	const removeStudent = (id) => {
 		$scope.studentArr.forEach(student => {
 			if (id === student.id) {
