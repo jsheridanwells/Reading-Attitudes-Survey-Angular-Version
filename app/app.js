@@ -20,7 +20,11 @@ app.config(($routeProvider) => {
 	})
 	.when('/student-login', {
 		templateUrl: 'partials/student-login.html',
-		controller: 'loginCtrl'
+		controller: 'studentLoginCtrl'
+	})
+	.when('/survey', {
+		templateUrl: 'partials/survey.html',
+		controller: 'surveyCtrl'
 	})
 	.when('/ed-login', {
 		templateUrl: 'partials/ed-login.html',

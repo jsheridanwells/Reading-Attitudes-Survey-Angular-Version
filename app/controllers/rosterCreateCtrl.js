@@ -5,6 +5,9 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 	//holds uid of current user
 	let userId = userFactory.getUserId();
 
+	//holds name of roster to assign to each student
+	$scope.rosterName = '';
+
 	//holds array of student names and access codes to print to DOM
 	$scope.studentArr = [];
 
@@ -13,41 +16,54 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 		firstName: '',
 		lastName: '',
 		accessCode: '',
-		responses: []
+		rosterName: $scope.rosterName,
+		uid: userId,
+		id: ''
 	};
 
-	//all new students get added to this object, posted to firebase rosters collection
-	let roster = {
-		uid: userId
-	};
-
-	//organizes new student object with access code, adds to rosters object, resets form
+	//organizes new student object with access code, adds to firebase collection, resets form
 	$scope.addStudent = () => {
 		let code = codeGenerator.createCode();
 		$scope.newStudent.accessCode = code;
-		roster[code] = $scope.newStudent;
-		$scope.studentArr.push($scope.newStudent);
-		resetNewStudent();
+		edFactory.postStudent($scope.newStudent)
+			.then(id => {
+				$scope.newStudent.id = id.name;
+				$scope.studentArr.push($scope.newStudent);
+				resetNewStudent();
+			})
+			.catch(error => console.log("error from addStudent", error));
 	};
 
-	//assigns uid to roster object, posts to firebase rosters collection, redirects to ed-overview
-	$scope.createRoster = () => {
-		roster.uid = userId;
-		edFactory.postRoster(roster)
+	$scope.editStudent = () => {
+
+	};
+
+	//deletes student from students collection in Firebase
+	$scope.deleteStudent = (id) => {
+		edFactory.deleteStudent(id)
 			.then(() => {
-				$location.url('/ed-overview');
+				removeStudent(id);
 			})
-			.catch(error => console.log("error from createRoster", error.message));
+			.catch(error => console.log("error from deleteStudent", error));
 	};
 
 	//clears newStudent form for next entry
 	const resetNewStudent = () => {
-			$scope.newStudent = {
+		$scope.newStudent = {
 			firstName: '',
 			lastName: '',
 			accessCode: '',
 			responses: []
 		};
+	};
+
+	//removes student from students array, called after deleteStudent
+	const removeStudent = (id) => {
+		$scope.studentArr.forEach(student => {
+			if (id === student.id) {
+				$scope.studentArr.splice($scope.studentArr.indexOf(student), 1);
+			}
+		});
 	};
 
 });

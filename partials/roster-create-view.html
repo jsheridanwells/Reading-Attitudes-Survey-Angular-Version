@@ -2,32 +2,45 @@
 	<div ng-include="'partials/nav.html'"></div>
 	<div class="main">
 		<h2>Create a New Survey</h2>
+		<p>Roster Name: <input type="text" placeholder="Roster Name" ng-model="rosterName">
 		<p>Add Students:</p>
 		<div class="student-input">
 			<form>
-				<input type="text" placeholder="First Name" ng-model="newStudent.firstName">
-				<input type="text" placeholder="Last Name" ng-model="newStudent.lastName">
-				<button ng-click="addStudent()">Add</button>
+				<p>
+					<input type="text" placeholder="First Name" ng-model="newStudent.firstName">
+					<input type="text" placeholder="Last Name" ng-model="newStudent.lastName">
+					<button ng-click="addStudent()">Add</button>
+				</p>
 			</form>
 		</div>
-
-		<h3>Students:</h3>
-		<table class="table">
-			<thead>
-				<th></th>
-				<th>First Name:</th>
-				<th>Last Name:</th>
-				<th>Access Code:</th>
-			</thead>
-			<tbody>
-				<tr ng-repeat="student in studentArr track by $index">
-					<td>{{$index + 1}}</td>
-					<td>{{student.firstName}}</td>
-					<td>{{student.lastName}}</td>
-					<td>{{student.accessCode}}</td>
-				</tr>
-			</tbody>
-		</table>
-		<button ng-click="createRoster()">Create Roster</button>
+		<div class="student-table" ng-show="studentArr.length > 0">
+			<h3>Students:</h3>
+			<table class="table">
+				<thead>
+					<th></th>
+					<th>First Name:</th>
+					<th>Last Name:</th>
+					<th>Access Code:</th>
+					<th>Roster:</th>
+					<th></th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="student in studentArr track by $index">
+						<td>{{$index + 1}}</td>
+						<td>{{student.firstName}}</td>
+						<td>{{student.lastName}}</td>
+						<td>{{student.accessCode}}</td>
+						<td>{{rosterName}}</td>
+						<td>
+							<button ng-click="editStudent(student.id)">Edit</button>
+							<button ng-click="deleteStudent(student.id)">Delete</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="button">
+			<a class="btn btn-primary" href="#!/ed-overview" role="button">Finished</a>
+		</div>
 	</div>
 </div>
