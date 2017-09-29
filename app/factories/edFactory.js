@@ -15,8 +15,13 @@ app.factory('edFactory', function ($http, $q, FBCreds) {
 				.catch(error => console.log("error from postStudent", error));
 		};
 
-	const editStudent = () => {
-
+	const editStudent = (id, obj) => {
+		return $q((resolve, reject) => {
+			let newObj = angular.toJson(obj);
+			$http.patch(`${url}/students/${id}.json`, newObj)
+				.then(data => resolve(data))
+				.catch(error => reject(error));
+		});
 	};
 
 	const deleteStudent = (id) => {
