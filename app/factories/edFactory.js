@@ -5,6 +5,17 @@ app.factory('edFactory', function ($http, $q, FBCreds) {
 	//imports firebase url
 	let url = FBCreds.databaseURL;
 
+	const getAllStudents = (userId) => {
+		return $q((resolve, reject) => {
+			$http.get(`${url}/students.json?orderBy="uid"&equalTo="${userId}"`)
+				.then(students => {
+					console.log("students from getAllStudents", students);
+					resolve(students.data);
+				})
+				.catch(error => reject(error));
+		});
+	};
+
 	//posts new roster object to rosters collection
 	const postStudent = (student) => {
 		let newStudent = angular.toJson(student);
@@ -33,6 +44,7 @@ app.factory('edFactory', function ($http, $q, FBCreds) {
 	};
 
 	return {
+		getAllStudents,
 		postStudent,
 		editStudent,
 		deleteStudent
