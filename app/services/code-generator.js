@@ -2,7 +2,7 @@
 
 app.service('codeGenerator', function () {
 
-	//creates random 6-digit string for students to enter to access survey
+	//creates random 5-digit string for students to enter to access survey
 	this.createCode = () => {
 		let code = '';
 		let chars = '0123456789abcdefghijklmnopqrstuvwxyz';
