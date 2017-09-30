@@ -19,6 +19,15 @@ app.controller('rosterListCtrl', function ($scope, edFactory, userFactory) {
 			.catch(error => console.log("error from listAllStudents", error));
 	};
 
+	//deletes student from students collection in Firebase
+	$scope.deleteStudent = (id) => {
+		edFactory.deleteStudent(id)
+			.then(() => {
+				listAllStudents();
+			})
+			.catch(error => console.log("error from deleteStudent", error));
+	};
+
 	listAllStudents();
 
 });
