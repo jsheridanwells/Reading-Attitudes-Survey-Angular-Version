@@ -61,6 +61,7 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 				})
 				.catch(error => console.log("error from postAllStudents", error));
 		});
+		$location.url('/ed-overview');
 	};
 
 	//clears newStudent form for next entry
