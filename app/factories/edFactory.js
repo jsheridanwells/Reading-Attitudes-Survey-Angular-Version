@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('edFactory', function ($http, $q, FBCreds) {
+app.factory('edFactory', function ($http, $q, FBCreds, dataProcessing) {
 
 	//imports firebase url
 	let url = FBCreds.databaseURL;
@@ -10,7 +10,7 @@ app.factory('edFactory', function ($http, $q, FBCreds) {
 			$http.get(`${url}/students.json?orderBy="uid"&equalTo="${userId}"`)
 				.then(students => {
 					console.log("students from getAllStudents", students);
-					resolve(students.data);
+					resolve(dataProcessing.makeArray(students.data));
 				})
 				.catch(error => reject(error));
 		});
