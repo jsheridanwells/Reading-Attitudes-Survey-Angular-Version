@@ -16,22 +16,30 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 		firstName: '',
 		lastName: '',
 		accessCode: '',
-		rosterName: $scope.rosterName,
+		rosterName: '',
 		uid: userId,
 		id: ''
 	};
 
 	//organizes new student object with access code, adds to firebase collection, resets form
+	// $scope.addStudent = () => {
+	// 	let code = codeGenerator.createCode();
+	// 	$scope.newStudent.accessCode = code;
+	// 	edFactory.postStudent($scope.newStudent)
+	// 		.then(id => {
+	// 			$scope.newStudent.id = id.name;
+	// 			$scope.studentArr.push($scope.newStudent);
+	// 			resetNewStudent();
+	// 		})
+	// 		.catch(error => console.log("error from addStudent", error));
+	// };
+
 	$scope.addStudent = () => {
 		let code = codeGenerator.createCode();
+		$scope.newStudent.rosterName = $scope.rosterName;
 		$scope.newStudent.accessCode = code;
-		edFactory.postStudent($scope.newStudent)
-			.then(id => {
-				$scope.newStudent.id = id.name;
-				$scope.studentArr.push($scope.newStudent);
-				resetNewStudent();
-			})
-			.catch(error => console.log("error from addStudent", error));
+		$scope.studentArr.push($scope.newStudent);
+		resetNewStudent();
 	};
 
 	//deletes student from students collection in Firebase
@@ -43,13 +51,28 @@ app.controller('rosterCreateCtrl', function ($scope, $location, codeGenerator, e
 			.catch(error => console.log("error from deleteStudent", error));
 	};
 
+	//posts each student in studentArr to firebase
+	$scope.postAllStudents = () => {
+		console.log("post all students firing");
+		$scope.studentArr.forEach(student => {
+			edFactory.postStudent(student)
+				.then(data => {
+					console.log("data from postAllStudents", data);
+				})
+				.catch(error => console.log("error from postAllStudents", error));
+		});
+		$location.url('/ed-overview');
+	};
+
 	//clears newStudent form for next entry
 	const resetNewStudent = () => {
 		$scope.newStudent = {
 			firstName: '',
 			lastName: '',
 			accessCode: '',
-			responses: []
+			rosterName: '',
+			uid: userId,
+			id: ''
 		};
 	};
 
