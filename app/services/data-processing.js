@@ -10,5 +10,10 @@ app.service('dataProcessing', function () {
 		});
 	};
 
+	this.addId = (obj) => {
+		obj[Object.keys(obj)[0]].id = Object.keys(obj)[0];
+		return obj[Object.keys(obj)[0]];
+	};
+
 
 });
