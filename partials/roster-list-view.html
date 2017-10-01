@@ -3,7 +3,7 @@
 	<div class="main">
 		<div class="student-table">
 			<h3>Students:</h3>
-			<table class="table">
+			<table class="table table-hover">
 				<thead>
 					<th></th>
 					<th>First Name:</th>
@@ -11,14 +11,18 @@
 					<th>Access Code:</th>
 					<th>Roster:</th>
 					<th></th>
+					<th></th>
 				</thead>
 				<tbody>
 					<tr ng-repeat="student in students track by $index">
 						<td>{{$index + 1}}</td>
-						<td>{{student.firstName}}</td>
-						<td>{{student.lastName}}</td>
+							<td>{{student.firstName}}</td>
+							<td>{{student.lastName}}</td>
 						<td>{{student.accessCode}}</td>
 						<td>{{student.rosterName}}</td>
+						<td>
+							<a ng-href="#!/results/{{student.id}}">View Results</a>
+						</td>
 						<td>
 							<button ng-click="deleteStudent(student.id)">Delete</button>
 						</td>
