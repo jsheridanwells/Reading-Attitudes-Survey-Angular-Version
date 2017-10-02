@@ -1,6 +1,9 @@
 <div class="main-splash">
 	<div ng-include="'partials/nav.html'"></div>
 	<div class="main">
+		<div class="welcome">
+			<h2>Welcome, {{student.firstName}} {{student.lastName}}</h2>
+		</div>
 		<div class="title">
 			<h2>Instructions:</h2>
 		</div>
@@ -34,7 +37,7 @@
 			<div class="col-6"></div>
 			<div class="col-6">
 				<div class="login-button mx-auto text-center">
-					<a ng-href="#" class="btn splash-btn" role="button">Start ></a>
+					<a ng-href="#!/survey/{{student.id}}" class="btn splash-btn" role="button">Start ></a>
 				</div>
 			</div>
 		</div>

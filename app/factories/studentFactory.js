@@ -3,20 +3,26 @@
 app.factory('studentFactory', function ($q, $http, FBCreds, dataProcessing) {
 
 	let url = FBCreds.databaseURL;
+	let currentStudent = {};
 
 	//gets single student object with student access code
 	const getStudentObj = (accessCode) => {
-		console.log("url", `${url}/students.json?orderBy="accessCode"&equalTo="${accessCode}"`);
 		return $q((resolve, reject) => {
 			$http.get(`${url}/students.json?orderBy="accessCode"&equalTo="${accessCode}"`)
 				.then(item => {
-					resolve(dataProcessing.addId(item.data));
+					currentStudent = dataProcessing.addId(item.data);
+					resolve(currentStudent);
 				})
 				.catch(error => reject(error));
 		});
 	};
 
+	const getCurrentStudent = () => {
+		return currentStudent;
+	};
+
 	return {
-		getStudentObj
+		getStudentObj,
+		getCurrentStudent
 	};
 });
