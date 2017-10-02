@@ -42,6 +42,11 @@ h1.splash-logo {
 	@include logo-font(50px);
 }
 
+a.link-logo {
+	@extend h1.splash-logo;
+	text-decoration: none;
+}
+
 .splash-row {
 	height: 100%;
 }

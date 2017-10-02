@@ -3,14 +3,14 @@
 const app = angular.module('readingAttitudes', ['ngRoute']);
 
 let isAuth = (userFactory) => new Promise ( (resolve, reject) => {
-  userFactory.checkAuthenticated()
-  .then( (userExists) => {
-    if(userExists){
-      resolve();
-    }else {
-      reject();
-    }
-  });
+    userFactory.checkAuthenticated()
+	    .then( (userExists) => {
+	        if(userExists){
+	            resolve();
+	        } else {
+	            reject();
+	        }
+	    });
 });
 
 app.config(($routeProvider) => {
@@ -56,6 +56,10 @@ app.config(($routeProvider) => {
 	.when('/results/:studentId', {
 		templateUrl: 'partials/results.html',
 		controller: 'resultsCtrl',
+		resolve: {isAuth}
+	})
+	.when('/about', {
+		templateUrl: 'partials/about-view.html',
 		resolve: {isAuth}
 	})
 	.otherwise('/');
