@@ -2,26 +2,33 @@
 
 app.controller('surveyCtrl', function ($scope, $location, studentFactory, surveyQuestions) {
 
+	let imgValue = 0;
+	let recCount = 0;
+	let acadCount = 0;
+
 	$scope.student = studentFactory.getCurrentStudent();
 	$scope.count = 0;
 	$scope.surveyQuestions = surveyQuestions;
-
-	let imgValue = 0;
 
 	$scope.setSelected = ($event) => {
 		let el = $event.target;
 		resetImgBorders();
 		$(el).attr('class', 'border-selected');
 		imgValue = getImgValue($(el).attr('id'));
-		console.log("imgValue", imgValue);
-
 	};
 
 	$scope.getNext = () => {
+		resetImgBorders();
 		if ($scope.count < $scope.surveyQuestions.length - 1) {
 			$scope.count++;
+			if ($scope.count <= 10) {
+				recCount += imgValue;
+			} else {
+				acadCount += imgValue;
+			}
+			console.log("counts", $scope.count, recCount, acadCount);
 		} else {
-			$location.url('/#!');
+			$location.url('/');
 		}
 	};
 
