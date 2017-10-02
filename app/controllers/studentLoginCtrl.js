@@ -13,7 +13,9 @@ app.controller('studentLoginCtrl', function ($location, $scope, studentFactory) 
 					$location.url('/student-intro');
 				}
 			})
-			.catch(error => console.log("error from studentLogin", error));
+			.catch(error => {
+				console.log("error from studentLogin", error);
+			});
 	};
 
 });

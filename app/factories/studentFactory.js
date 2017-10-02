@@ -10,8 +10,13 @@ app.factory('studentFactory', function ($q, $http, FBCreds, dataProcessing) {
 		return $q((resolve, reject) => {
 			$http.get(`${url}/students.json?orderBy="accessCode"&equalTo="${accessCode}"`)
 				.then(item => {
-					currentStudent = dataProcessing.addId(item.data);
-					resolve(currentStudent);
+					console.log("item from getStudentObj", item);
+					if (angular.equals(item.data, {})) {
+						resolve(item.data);
+					} else {
+						currentStudent = dataProcessing.addId(item.data);
+						resolve(currentStudent);
+					}
 				})
 				.catch(error => reject(error));
 		});
