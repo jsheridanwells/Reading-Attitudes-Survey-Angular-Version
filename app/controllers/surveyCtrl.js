@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('surveyCtrl', function ($scope, $location, studentFactory, surveyQuestions) {
+app.controller('surveyCtrl', function ($scope, $location, studentFactory, edFactory, surveyQuestions) {
 
 	//loads data for current student
 	$scope.student = studentFactory.getCurrentStudent();
@@ -38,7 +38,13 @@ app.controller('surveyCtrl', function ($scope, $location, studentFactory, survey
 					acadCount += imgValue;
 				}
 			} else {
-				$location.url('/');
+				$scope.student.recScore = Math.round((recCount / 40) * 100);
+				$scope.student.acadScore = Math.round((acadCount / 40) * 100);
+				$scope.student.composite = Math.round(((recCount + acadCount) / 80) * 100);
+				console.log("$scope.student", $scope.student);
+				edFactory.editStudent($scope.student.id, $scope.student)
+					.then(response => $location.url('/'))
+					.catch(error => console.log("error from getNext", error));
 			}
 		}
 		imgValue = 0;

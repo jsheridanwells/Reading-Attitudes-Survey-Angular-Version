@@ -5,6 +5,7 @@ app.factory('edFactory', function ($http, $q, FBCreds, dataProcessing) {
 	//imports firebase url
 	let url = FBCreds.databaseURL;
 
+	//returns array of all students associated with current user
 	const getAllStudents = (userId) => {
 		return $q((resolve, reject) => {
 			$http.get(`${url}/students.json?orderBy="uid"&equalTo="${userId}"`)
