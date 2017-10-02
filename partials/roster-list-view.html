@@ -21,7 +21,9 @@
 						<td>{{student.accessCode}}</td>
 						<td>{{student.rosterName}}</td>
 						<td>
+							<div ng-show="student.composite">
 							<a ng-href="#!/results/{{student.id}}">View Results</a>
+							</div>
 						</td>
 						<td>
 							<button ng-click="deleteStudent(student.id)">Delete</button>
