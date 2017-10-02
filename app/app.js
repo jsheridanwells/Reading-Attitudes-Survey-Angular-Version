@@ -30,6 +30,10 @@ app.config(($routeProvider) => {
 		templateUrl: 'partials/survey.html',
 		controller: 'surveyCtrl'
 	})
+	.when('/exit-page', {
+		templateUrl: 'partials/exit-page.html',
+		controller: 'loginCtrl'
+	})
 	.when('/ed-login', {
 		templateUrl: 'partials/ed-login.html',
 		controller: 'loginCtrl'
@@ -47,6 +51,11 @@ app.config(($routeProvider) => {
 	.when('/roster-list', {
 		templateUrl: 'partials/roster-list-view.html',
 		controller: 'rosterListCtrl',
+		resolve: {isAuth}
+	})
+	.when('/results/:studentId', {
+		templateUrl: 'partials/results.html',
+		controller: 'resultsCtrl',
 		resolve: {isAuth}
 	})
 	.otherwise('/');
