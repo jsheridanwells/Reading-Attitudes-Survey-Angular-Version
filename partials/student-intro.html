@@ -1,0 +1,45 @@
+<div class="main-splash">
+	<div ng-include="'partials/nav.html'"></div>
+	<div class="main">
+		<div class="welcome">
+			<h2>Welcome, {{student.firstName}} {{student.lastName}}</h2>
+		</div>
+		<div class="title">
+			<h2>Instructions:</h2>
+		</div>
+		<div class="row">
+			<div class="col-8">
+				<div>
+					<p>
+						Your teacher wants to learn more about how much you like reading.
+						You will answer 20 questions about reading and what kinds of reading you enjoy.
+						For each question, click the picture that describes how you feel when you read.
+					</p>
+				</div>
+			</div>
+			<div class="col-4"></div>
+		</div>
+		<div class="row image-row">
+			<div class="col-3">
+				<img src="img/img1.png" alt="Garfield" class="garfield">
+			</div>
+			<div class="col-3">
+				<img src="img/img2.png" alt="Garfield" class="garfield">
+			</div>
+			<div class="col-3">
+				<img src="img/img3.png" alt="Garfield" class="garfield">
+			</div>
+			<div class="col-3">
+				<img src="img/img4.png" alt="Garfield" class="garfield">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6"></div>
+			<div class="col-6">
+				<div class="login-button mx-auto text-center">
+					<a ng-href="#!/survey/{{student.id}}" class="btn splash-btn" role="button">Start ></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

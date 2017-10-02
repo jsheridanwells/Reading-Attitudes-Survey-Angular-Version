@@ -10,5 +10,11 @@ app.service('dataProcessing', function () {
 		});
 	};
 
+	//with student object downloaded from firebase, assigns id as value from ugly id
+	this.addId = (obj) => {
+		obj[Object.keys(obj)[0]].id = Object.keys(obj)[0];
+		return obj[Object.keys(obj)[0]];
+	};
+
 
 });
