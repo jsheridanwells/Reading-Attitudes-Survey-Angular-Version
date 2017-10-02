@@ -10,8 +10,18 @@ app.factory('edFactory', function ($http, $q, FBCreds, dataProcessing) {
 		return $q((resolve, reject) => {
 			$http.get(`${url}/students.json?orderBy="uid"&equalTo="${userId}"`)
 				.then(students => {
-					console.log("students from getAllStudents", students);
 					resolve(dataProcessing.makeArray(students.data));
+				})
+				.catch(error => reject(error));
+		});
+	};
+
+	//returns single student object accessed by uglyId
+	const getSingleStudent = (studentId) => {
+		return $q((resolve, reject) =>{
+			$http.get(`${url}/students/${studentId}.json`)
+				.then(student => {
+					resolve(dataProcessing.addId(student));
 				})
 				.catch(error => reject(error));
 		});
@@ -46,6 +56,7 @@ app.factory('edFactory', function ($http, $q, FBCreds, dataProcessing) {
 
 	return {
 		getAllStudents,
+		getSingleStudent,
 		postStudent,
 		editStudent,
 		deleteStudent
