@@ -58,6 +58,7 @@ h1.splash-logo {
 	margin-top: 2em;
 	background-color: $blue;
 	color: white !important;
+	cursor: pointer;
 }
 
 //nav styles
@@ -106,3 +107,14 @@ li.nav-list {
 img.garfield {
 	border: 1px solid #999;
 }
+
+p.question {
+	margin-left: 2em;
+	font-size: 2em;
+}
+
+.border-selected {
+	border: 3px solid orange;
+}
+
+

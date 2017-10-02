@@ -1,13 +1,65 @@
 'use strict';
 
-app.controller('surveyCtrl', function ($scope, $rootScope, studentFactory) {
+app.controller('surveyCtrl', function ($scope, $location, studentFactory, surveyQuestions) {
 
+	//loads data for current student
 	$scope.student = studentFactory.getCurrentStudent();
 
-	const loadTest = () => {
-		console.log("$scope.student", $scope.student);
+	//loads survey questions
+	$scope.surveyQuestions = surveyQuestions;
+
+	//holds values of image selected, score for recreational reading, score for academic reading
+	let imgValue = 0;
+	let recCount = 0;
+	let acadCount = 0;
+
+	//increments each time response is submitted to change index of survey questions array
+	$scope.count = 0;
+
+	//each time image is selected by user, changes border of image, changes value of imgValue to selected value
+	$scope.setSelected = ($event) => {
+		let el = $event.target;
+		resetImgBorders();
+		$(el).attr('class', 'border-selected');
+		imgValue = getImgValue($(el).attr('id'));
 	};
 
-	loadTest();
+	//when button is clicked, resets borders of images,
+	//increases question count, stores value of selected image in acadCount or recCounts
+	//depending on current question
+	$scope.getNext = () => {
+		resetImgBorders();
+		if (imgValue !== 0) {
+			if ($scope.count < $scope.surveyQuestions.length - 1) {
+				$scope.count++;
+				if ($scope.count <= 10) {
+					recCount += imgValue;
+				} else {
+					acadCount += imgValue;
+				}
+			} else {
+				$location.url('/');
+			}
+		}
+		imgValue = 0;
+	};
+
+	//resets all image borders to gray
+	const resetImgBorders = () => {
+		$('img').attr('class', 'garfield');
+	};
+
+	//returns integer for value of image selected based on id
+	const getImgValue = (value) => {
+		if (value === 'one') {
+			return 1;
+		} else if (value === 'two') {
+			return 2;
+		} else if (value === 'three') {
+			return 3;
+		} else if (value === 'four') {
+			return 4;
+		}
+	};
 
 });
