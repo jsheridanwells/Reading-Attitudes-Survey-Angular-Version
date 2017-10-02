@@ -43,7 +43,7 @@ app.controller('surveyCtrl', function ($scope, $location, studentFactory, edFact
 				$scope.student.composite = Math.round(((recCount + acadCount) / 80) * 100);
 				console.log("$scope.student", $scope.student);
 				edFactory.editStudent($scope.student.id, $scope.student)
-					.then(response => $location.url('/'))
+					.then(response => $location.url('/exit-page'))
 					.catch(error => console.log("error from getNext", error));
 			}
 		}

@@ -30,6 +30,10 @@ app.config(($routeProvider) => {
 		templateUrl: 'partials/survey.html',
 		controller: 'surveyCtrl'
 	})
+	.when('/exit-page', {
+		templateUrl: 'partials/exit-page.html',
+		controller: 'loginCtrl'
+	})
 	.when('/ed-login', {
 		templateUrl: 'partials/ed-login.html',
 		controller: 'loginCtrl'
