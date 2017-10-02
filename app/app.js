@@ -53,6 +53,11 @@ app.config(($routeProvider) => {
 		controller: 'rosterListCtrl',
 		resolve: {isAuth}
 	})
+	.when('/results/:studentId', {
+		templateUrl: 'partials/results.html',
+		controller: 'resultsCtrl',
+		resolve: {isAuth}
+	})
 	.otherwise('/');
 });
 
