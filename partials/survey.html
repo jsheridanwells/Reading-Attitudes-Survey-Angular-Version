@@ -6,7 +6,7 @@
 		</div>
 		<div class="question">
 			<p class="question">
-				How often to you read on Sunday?
+				{{surveyQuestions[count]}}
 			</p>
 		</div>
 		<div class="row image-row">
@@ -27,7 +27,7 @@
 			<div class="col-6"></div>
 			<div class="col-6">
 				<div class="login-button mx-auto text-center">
-					<a ng-href="#" class="btn splash-btn" role="button">Next Question ></a>
+					<a ng-click="getNext()" class="btn splash-btn" role="button">Next Question ></a>
 				</div>
 			</div>
 		</div>
