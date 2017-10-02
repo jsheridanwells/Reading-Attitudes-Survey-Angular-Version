@@ -2,14 +2,21 @@
 
 app.controller('surveyCtrl', function ($scope, $location, studentFactory, surveyQuestions) {
 
+	//loads data for current student
+	$scope.student = studentFactory.getCurrentStudent();
+
+	//loads survey questions
+	$scope.surveyQuestions = surveyQuestions;
+
+	//holds values of image selected, score for recreational reading, score for academic reading
 	let imgValue = 0;
 	let recCount = 0;
 	let acadCount = 0;
 
-	$scope.student = studentFactory.getCurrentStudent();
+	//increments each time response is submitted to change index of survey questions array
 	$scope.count = 0;
-	$scope.surveyQuestions = surveyQuestions;
 
+	//each time image is selected by user, changes border of image, changes value of imgValue to selected value
 	$scope.setSelected = ($event) => {
 		let el = $event.target;
 		resetImgBorders();
@@ -17,29 +24,32 @@ app.controller('surveyCtrl', function ($scope, $location, studentFactory, survey
 		imgValue = getImgValue($(el).attr('id'));
 	};
 
+	//when button is clicked, resets borders of images,
+	//increases question count, stores value of selected image in acadCount or recCounts
+	//depending on current question
 	$scope.getNext = () => {
 		resetImgBorders();
-		if ($scope.count < $scope.surveyQuestions.length - 1) {
-			$scope.count++;
-			if ($scope.count <= 10) {
-				recCount += imgValue;
+		if (imgValue !== 0) {
+			if ($scope.count < $scope.surveyQuestions.length - 1) {
+				$scope.count++;
+				if ($scope.count <= 10) {
+					recCount += imgValue;
+				} else {
+					acadCount += imgValue;
+				}
 			} else {
-				acadCount += imgValue;
+				$location.url('/');
 			}
-			console.log("counts", $scope.count, recCount, acadCount);
-		} else {
-			$location.url('/');
 		}
+		imgValue = 0;
 	};
 
-	const loadTest = () => {
-		console.log("$scope.student", $scope.student);
-	};
-
+	//resets all image borders to gray
 	const resetImgBorders = () => {
 		$('img').attr('class', 'garfield');
 	};
 
+	//returns integer for value of image selected based on id
 	const getImgValue = (value) => {
 		if (value === 'one') {
 			return 1;
@@ -51,7 +61,5 @@ app.controller('surveyCtrl', function ($scope, $location, studentFactory, survey
 			return 4;
 		}
 	};
-
-	loadTest();
 
 });
