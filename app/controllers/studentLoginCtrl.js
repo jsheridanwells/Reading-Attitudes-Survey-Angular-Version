@@ -14,7 +14,7 @@ app.controller('studentLoginCtrl', function ($location, $scope, $rootScope, $rou
 					$routeParams.studentId = data.id;
 					$rootScope.student = data;
 					console.log("$rootScope.student", $rootScope.student);
-					$location.url('survey/' + $routeParams.studentId);
+					$location.url('student-intro');
 				}
 			})
 			.catch(error => console.log("error from studentLogin", error));

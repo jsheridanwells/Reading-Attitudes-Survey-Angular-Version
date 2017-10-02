@@ -1,5 +1,8 @@
 'use strict';
 
-app.controller('surveyCtrl', function () {
+app.controller('surveyCtrl', function ($scope, $rootScope) {
 	
+
+
+
 });
