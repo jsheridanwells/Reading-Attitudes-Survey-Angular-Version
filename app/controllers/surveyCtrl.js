@@ -6,6 +6,13 @@ app.controller('surveyCtrl', function ($scope, $location, studentFactory, survey
 	$scope.count = 0;
 	$scope.surveyQuestions = surveyQuestions;
 
+	$scope.setSelected = ($event) => {
+		let el = $event.target;
+		console.log("event", el);
+		resetImgBorders();
+		$(el).attr('class', 'border-selected');
+	};
+
 	$scope.getNext = () => {
 		if ($scope.count < $scope.surveyQuestions.length - 1) {
 			$scope.count++;
@@ -16,6 +23,10 @@ app.controller('surveyCtrl', function ($scope, $location, studentFactory, survey
 
 	const loadTest = () => {
 		console.log("$scope.student", $scope.student);
+	};
+
+	const resetImgBorders = () => {
+		$('img').attr('class', 'garfield');
 	};
 
 	loadTest();
