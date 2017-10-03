@@ -1,24 +1,28 @@
 <div class="main-splash">
 	<div ng-include="'partials/nav.html'"></div>
-	<div class="row splash-row">
+	<div class="row splash-row mt-3">
 		<div class="col-6 splash-left">
 			<h2>{{student.firstName}} {{student.lastName}}</h2>
 			<img src="img/img3.png" class="splash-img" alt="Garfield">
 		</div>
 		<div class="col-6 splash-right">
 			<h2>Results:</h2>
-			<div>
-				<h3>Recreational Reading:</h3>
-				<h4>{{student.recScore}} %</h4>
-			</div>
-			<div>
-				<h3>Academic Reading:</h3>
-				<h4>{{student.acadScore}} %</h4>
-			</div>
-			<div>
-				<h2>Composite Score:</h2>
-				<h3>{{student.composite}} %</h3>
-			</div>
+			<table class="table mt-4">
+				<tbody>
+					<tr>
+						<td><h4>Recreational Reading:</h4></td>
+						<td><span class="orange">{{student.recScore}} %</span></td>
+					</tr>
+					<tr>
+						<td><h4>Academic Reading:</h4></td>
+						<td><span class="orange">{{student.acadScore}} %</span></td>
+					</tr>
+					<tr>
+						<td><h4><strong>Composite Score:</strong></h4></td>
+						<td><strong><span class="orange">{{student.composite}} %</span></strong></td>
+					</tr>
+				</tbody>
+			</table>
 			<div class="login-button mx-auto text-center">
 				<a ng-href="#!/roster-list" class="btn splash-btn" role="button">Back to Rosters</a>
 			</div>
