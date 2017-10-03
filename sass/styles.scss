@@ -17,12 +17,21 @@ h2 {
 	@include text-font(3em);
 }
 
+h3 {
+	@include text-font(2.5em);
+}
+
+h2 {
+	@include text-font(2em);
+}
+
 p, a {
 	@include text-font(16px);
 }
 
 //colors
 $blue: #5bc0de;
+$orange: #ff8000;
 
 .index-container {
 	margin-top: 3em;
@@ -120,6 +129,11 @@ p.question {
 
 .border-selected {
 	border: 3px solid orange;
+}
+
+//results styles
+.orange {
+	color: $orange;
 }
 
 
