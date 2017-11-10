@@ -7,6 +7,9 @@ success in reading in elementary school. Teachers create class rosters which gen
 access the survey. Students can take the survey and the results are calculated and stored in a database and a available
 to the teacher to evaluate.
 
+<img src="documentation/reading-4.png" width="500" />
+<img src="documentation/reading-3.png" width="500" />
+
 ## Technologies Used
 
 * AngularJS
