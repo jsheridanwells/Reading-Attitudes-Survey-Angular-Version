@@ -4,7 +4,7 @@ An electronic implementation of the Elementary Reading Attitudes Survey by Micha
 
 With this app, teachers can measure students' feelings toward academic and recreational reading which are predictors of
 success in reading in elementary school. Teachers create class rosters which generate a random key code for students to 
-access the survey. Students can take the survey and the results are calculated and stored in a database and a available
+access the survey. Students can take the survey and the results are calculated and stored in a database and available
 to the teacher to evaluate.
 
 <img src="documentation/reading-4.png" width="500" />
@@ -20,19 +20,19 @@ to the teacher to evaluate.
 
 ## Installation and setup
 
-The ERAS requires Node Package Manager and Sass
+The app requires Node Package Manager and Sass
 
 1. Download the GitHub repository:
 
-``` git clone https://github.com/jsheridanwells/Reading-Attitudes-Survey-Angular-Version.git```
+``` $ git clone https://github.com/jsheridanwells/Reading-Attitudes-Survey-Angular-Version.git```
 
 2. Change to the lib directory:
 
-``` cd Reading-Attitudes-Suvey-Angular-Version/lib```
+``` $ cd Reading-Attitudes-Suvey-Angular-Version/lib```
 
 3. Install dependencies using the Node Package Manager:
 
-``` npm install ```
+``` $ npm install ```
 
 Before running the server, a Firebase database and credentials will need to be added.
 
