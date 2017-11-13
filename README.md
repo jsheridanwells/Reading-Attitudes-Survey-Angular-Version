@@ -2,6 +2,10 @@
 
 An electronic implementation of the [Elementary Reading Attitudes Survey](http://www.leadtoreadkc.org/wp-content/uploads/2012/12/Professor-Garfield-reading-survey-used-by-Lead-to-Read-KC.pdf) by Michael C. McKenna and Dennis J. Kear.
 
+__View the deployed version:__
+
+http://reading-attitudes-survey.surge.sh/
+
 With this app, teachers can measure students' feelings toward academic and recreational reading which are predictors of
 success in reading in elementary school. Teachers create class rosters which generate a random key code for students to 
 access the survey. Students can take the survey and the results are calculated and stored in a database and available
