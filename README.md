@@ -4,7 +4,7 @@ An electronic implementation of the [Elementary Reading Attitudes Survey](http:/
 
 __View the deployed version:__
 
-http://reading-attitudes-survey.surge.sh/
+http://jeremywells.io/reading-attitudes-survey
 
 With this app, teachers can measure students' feelings toward academic and recreational reading which are predictors of
 success in reading in elementary school. Teachers create class rosters which generate a random key code for students to 
